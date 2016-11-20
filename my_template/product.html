@@ -1,0 +1,44 @@
+
+<div class="container text-center"> 
+    <h1 ng-bind="type"></h1>
+    <br>
+    <hr />
+    <div class="row filter">
+        <label>Sắp theo giá: </label>
+        <select ng-model="chooseprice">
+            <option value="">Thứ tự</option>   
+            <option value="price">Thấp đến cao</option>
+            <option value="-price">Cao đến thấp</option>
+        </select>
+    </div>
+    <div class="row product bounceInLeft animated" ui-view>
+        <div it='data' class="col-xs-12 col-sm-3 col-md-3" ng-repeat="datas in data | orderBy: chooseprice | Paging:nowPage*sizePage | limitTo:sizePage">
+             <a ui-sref="detail({code: datas.code})"><img src="imgs/product/{{datas.img1}}" class="" style="width: 80%; height:80%" alt="Image"/></a>
+            <div class="caption">
+                <h5>{{datas.name}}</h5>
+                <p>Giá: {{datas.price}} VND</p>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="paging">
+        <button class="btn-paging" ng-disabled="nowPage == 0" ng-click="nowPage=nowPage-1">
+            <<
+        </button>
+        <a class="text-paging">{{nowPage+1}}/{{totalPage()}}</a>
+        <button class="btn-paging" ng-disabled="nowPage >= data.length/sizePage - 1" ng-click="nowPage=nowPage+1">
+            >>
+        </button>
+    </div>   
+<!--
+    <div class="paging">
+        <ul class="pagination">
+            <li ng-disabled="nowPage == 0" ng-click="nowPage=nowPage-1" style="cursor: pointer"><a>«</a></li>
+            <li><a>{{nowPage+1}}/{{totalPage()}}</a></li>
+            <li><a ng-disabled="nowPage >= data.length/sizePage - 1" ng-click="nowPage=nowPage+1" style="cursor: pointer">»</a></li>
+        </ul>
+    </div>
+-->
+    
+</div>
+<br>

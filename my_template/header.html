@@ -1,0 +1,54 @@
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" runat="server" ui-sref="home">FASHION</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="ico-home"><a runat="server" ui-sref="home"><i class="fa fa-home"></i></a></li>
+                <li>
+                    <a style="cursor: pointer" data-toggle="dropdown" aria-expanded="false" runat="server">NAM</a>
+                    <ul class="dropdown-menu fadeIn animated">
+                        <li><a ui-sref="product({type: 'Shirt Men'})" ng-click="collapsein()"><span><i class="fa fa-chevron-right"></i>Shirt</span></a></li>
+                        <li><a ui-sref="product({type: 'T-shirt Men'})" ng-click="collapsein()"><span><i class="fa fa-chevron-right"></i>T-shirt</span></a></li>
+                        <li><a ui-sref="product({type: 'Jean Men'})" ng-click="collapsein()"><span><i class="fa fa-chevron-right"></i>Jean</span></a></li>
+                        <li><a ui-sref="product({type: 'Suit Men'})" ng-click="collapsein()"><span><i class="fa fa-chevron-right"></i>Suit</span></a></li>
+                        <li><a ui-sref="product({type: 'Pant Men'})" ng-click="collapsein()"><span><i class="fa fa-chevron-right"></i>Pant</span></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a style="cursor: pointer" data-toggle="dropdown" runat="server">NỮ</a>
+                    <ul class="dropdown-menu fadeIn animated">
+                        <li><a ui-sref="product({type: 'Dress Girl'})" ng-click="collapsein()"><span><i class="fa fa-chevron-right"></i>Dress</span></a></li>
+                        <li><a ui-sref="product({type: 'Jean Girl'})" ng-click="collapsein()"><span><i class="fa fa-chevron-right"></i>Jean</span></a></li>
+                        <li><a ui-sref="product({type: 'Shirt Girl'})" ng-click="collapsein()"><span><i class="fa fa-chevron-right"></i>Shirt</span></a></li>
+                        <li><a ui-sref="product({type: 'Suit Girl'})" ng-click="collapsein()"><span><i class="fa fa-chevron-right"></i>Suit</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <div class="search-hide">
+                        <input type="text" maxlength="35" size="35" placeholder="Tìm theo tên..." style="width: 170px;" ng-model="search"/>
+                        <a ui-sref="search-product({name: search})"><i class="fa fa-search"></i></a>
+                    </div>
+                </li>
+                <li class="your-cart">
+                    <p>Your Cart: <a class="bag" ui-sref="cart">
+                    <i class="fa fa-shopping-bag"><span class="badge num-cart" ng-bind="numcart">0</span></i>
+                    </a>
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <div class="nav navbar-nav navbar-right navbar-form">
+            <input type="text" maxlength="35" size="35" placeholder="Tìm theo tên" style="width: 170px;" ng-model="search"/>
+            <a ui-sref="search-product({name: search})"><i class="fa fa-search"></i></a>
+        </div>        
+    </div>
+</nav>

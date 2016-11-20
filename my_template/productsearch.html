@@ -1,0 +1,16 @@
+<div class="container text-center">
+    <h1>Kết quả tìm kiếm</h1>
+    <br>
+    <hr />
+    <div class="row product bounceInLeft animated" ui-view>
+        <div it='data' class="col-xs-12 col-sm-3 col-md-3" ng-repeat="datas in data | filter: {name: name}">
+             <a ui-sref="detail({code: datas.code})"><img src="imgs/product/{{datas.img1}}" class="" style="width: 80%; height:80%" alt="Image"/></a>
+            <div class="caption">
+                <h5>{{datas.name}}</h5>
+                <p>Giá: {{datas.price}}VND</p>
+            </div>
+        </div>
+    </div>
+    <hr />    
+</div>
+<br>

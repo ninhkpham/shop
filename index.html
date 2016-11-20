@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myProject">
+<head>
+    <title>FASHION</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap_css/bootstrap.min.css" />
+    <link href="fa_css/font-awesome.min.css" rel="stylesheet" />
+    <link href="my_css/style.css" rel="stylesheet" />
+    <link href="animate_css/animate.css" rel="stylesheet" />
+    <link href="fa_css/font-awesome.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="imgs/clothes.ico" type="image/x-icon">
+</head>
+<body ng-controller="homeController">    
+    <header>        
+        <nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" runat="server" ui-sref="home">FASHION</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li style="font-size:20px"><a runat="server" ui-sref="home"><i class="fa fa-home"></i></a></li>
+                <li>
+                    <a style="cursor: pointer" data-toggle="dropdown" aria-expanded="false" runat="server">NAM</a>
+                    <ul class="dropdown-menu fadeIn animated">
+                        <li><a ui-sref="product({type: 'Shirt Men'})" ng-click="collapsein()"><span><i class="fa fa-chevron-right"></i>Sơ mi</span></a></li>
+                        <li><a ui-sref="product({type: 'T-shirt Men'})" ng-click="collapsein()"><span><i class="fa fa-chevron-right"></i>Áo thun</span></a></li>
+                        <li><a ui-sref="product({type: 'Jean Men'})" ng-click="collapsein()"><span><i class="fa fa-chevron-right"></i>Jean</span></a></li>
+                        <li><a ui-sref="product({type: 'Suit Men'})" ng-click="collapsein()"><span><i class="fa fa-chevron-right"></i>Suit</span></a></li>
+                        <li><a ui-sref="product({type: 'Pant Men'})" ng-click="collapsein()"><span><i class="fa fa-chevron-right"></i>Pant</span></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a style="cursor: pointer" data-toggle="dropdown" runat="server">NỮ</a>
+                    <ul class="dropdown-menu fadeIn animated">
+                        <li><a ui-sref="product({type: 'Dress Girl'})" ng-click="collapsein()"><span><i class="fa fa-chevron-right"></i>Đầm</span></a></li>
+                        <li><a ui-sref="product({type: 'Jean Girl'})" ng-click="collapsein()"><span><i class="fa fa-chevron-right"></i>Jean</span></a></li>
+                        <li><a ui-sref="product({type: 'Shirt Girl'})" ng-click="collapsein()"><span><i class="fa fa-chevron-right"></i>Sơ mi</span></a></li>
+                        <li><a ui-sref="product({type: 'Suit Girl'})" ng-click="collapsein()"><span><i class="fa fa-chevron-right"></i>Suit</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <div class="search-hide">
+                        <input type="text" maxlength="35" size="35" placeholder="Tìm theo tên..." style="width: 170px;" ng-model="search"/>
+                        <a ui-sref="search-product({name: search})"><i class="fa fa-search"></i></a>
+                    </div>
+                </li>
+                <li class="your-cart">
+                    <a class="bag" ui-sref="cart"><p><i class="fa fa-shopping-bag"></i>Giỏ hàng của bạn:<span class="badge num-cart" ng-bind="numcart">
+                        0</span>
+                    </p></a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav navbar-nav navbar-right navbar-form">
+            <input type="text" maxlength="35" size="35" placeholder="Tìm theo tên" style="width: 170px;" ng-model="search"/>
+            <a ui-sref="search-product({name: search})"><i class="fa fa-search"></i></a>
+        </div>        
+    </div>
+</nav>
+    </header>        
+    <section ui-view>
+    </section>    
+    <footer class="wow container-fluid text-center zoomIn animated">
+        <div class="container">
+            <div class="row container">
+                <div class="col-md-4">
+                    <h4>Liên kết:</h4>
+                    <div class="font-awe">
+                        <i class="fa fa-facebook-square"></i>
+                        <i class="fa fa-twitter-square"></i>
+                        <i class="fa fa-instagram"></i>
+                        <i class="fa fa-youtube-square"></i>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h4>Liên hệ</h4>
+                    <p>Địa chỉ: 3501 Jack Northrop Ave, Hawthorne, CA</p>
+                    <p>Email: info@shipito.com</p>
+                    <p>Điện thoại: 310 349 1172 - 310 349 1182</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Giới thiệu</h4>
+                    <p>
+                        FASHION is a global online destination for fashion-forward, free-thinking girls. In 2006, founder Sophia Amoruso started an eBay store selling a highly curated selection of vintage pieces. The shop has grown to become an international style source offering both new and vintage clothing, shoes, and accessories. The name was inspired by the song and album “FASHION” Betty Davis.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row container">
+            <img class="img-footer" src="imgs/icon_footer.png" />
+</div>
+    </footer>
+    <p id="back-top"><a href="#top"><span></span>Lên đầu trang</a></p>
+</body>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="bower_components/firebase/firebase.js"></script>
+<script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+<script src="bower_components/wow/dist/wow.min.js"></script>
+<script src="dist/myScript.js"></script>
+<script>
+    wow = new WOW({
+        animateClass: 'animated',
+        offset: 100
+      });
+    wow.init();
+</script>
+</html>
