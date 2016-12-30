@@ -43,7 +43,7 @@ export default class ProductForm extends Component {
       saveError: {[formKey]: saveError },
       values
     } = this.props;
-    const styles = require('containers/Products/Products.scss');
+    const styles = require('containers/Home/Home.scss');
     return (
       <div className={submitting ? styles.saving : ''}>
         <div className={styles.idCol}>ID: {id.value}</div>
@@ -65,7 +65,7 @@ export default class ProductForm extends Component {
         </div>
         <div className={styles.description}>
           Mô tả:
-          <input type="text" className="form-control" {...description} />
+          <textarea rows="10" className="form-control" {...description}></textarea>
           {description.error && description.touched && <div className="text-danger">{description.error}</div>}
         </div>
         <div className={styles.buttonCol}>

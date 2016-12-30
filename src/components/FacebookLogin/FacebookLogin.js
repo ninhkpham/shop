@@ -44,10 +44,22 @@ export default class FacebookLogin extends Component {
     });
   }
 
+  checkLoginState() {
+    window.FB.getLoginStatus((response) => {
+      this.statusChangeCallback(response);
+    });
+  }
+
+  handleClick() {
+    window.FB.login(this.checkLoginState());
+  }
+
   render() {
     return (
       <div>
-        <div className="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false">Login</div>
+        <div className="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false">
+          <a href="#" onClick={() => this.handleClick()}>Login</a>
+        </div>
         <div>{this.state.message}</div>
       </div>
     );
