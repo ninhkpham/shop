@@ -105,6 +105,6 @@ export default function load(req, params) {
     //   //Close connection
     //   db.close();
     // }
-  });
+  //});
 });
 }
