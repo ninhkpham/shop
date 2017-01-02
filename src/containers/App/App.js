@@ -114,6 +114,10 @@ export default class App extends Component {
 
           <Navbar.Collapse eventKey={0}>
             <Nav navbar>
+              <LinkContainer to="product/10">
+                <NavItem eventKey={100}><span className={styles.navbar}>Sữa</span></NavItem>
+              </LinkContainer>
+
               {user && <LinkContainer to="/chat">
                 <NavItem eventKey={1}><span className={styles.navbar}>Chat</span></NavItem>
               </LinkContainer>}

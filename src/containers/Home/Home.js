@@ -9,9 +9,9 @@ import { asyncConnect } from 'redux-async-connect';
 
 @asyncConnect([{
   deferred: true,
-  promise: ({store: {dispatch, getState}}) => {
+  promise: ({store: {dispatch, getState}, params: { type } }) => {
     if (!isLoaded(getState())) {
-      return dispatch(loadProducts());
+      return dispatch(loadProducts(type));
     }
   }
 }])
@@ -39,6 +39,9 @@ export default class Home extends Component {
   };
 
   render() {
+    // const xx = this.props.location.query.type;
+    // console.log(xx);
+
     const handleEdit = (product) => {
       const {editStart} = this.props; // eslint-disable-line no-shadow
       return () => editStart(product.id);

@@ -30,10 +30,11 @@ export default function reducer(state = initialState, action = {}) {
         loading: true
       };
     case LOAD_SUCCESS:
+      console.log(action.result);
       return {
         ...state,
         loading: false,
-        loaded: true,
+        // loaded: true,
         data: action.result,
         error: null
       };
@@ -132,10 +133,10 @@ export function isLoaded(globalState) {
   return globalState.products && globalState.products.loaded;
 }
 
-export function load() {
+export function load(type) {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: (client) => client.get('/product/load/param1/param2') // params not used, just shown as demonstration
+    promise: (client) => client.get('/product/load/' + type)
   };
 }
 

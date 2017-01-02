@@ -44,6 +44,7 @@ export default (store) => {
       </Route>
 
       { /* Routes */}
+      <Route path="product/:type" component={Home} />
       <Route path="about" component={About} />
       <Route path="login" component={Login} />
       <Route path="pagination" component={Pagination} />

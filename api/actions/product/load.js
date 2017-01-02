@@ -1,8 +1,8 @@
 // ['Sữa', 'Đồ gia dụng', 'Thực phẩm tươi sống', 'Sản phẩm Nhật Bản', 'Sản phẩm Thái Lan', 'Sản phẩm khác'];
 const initialProducts = [
   {
-    id: 1, 
-    name: 'Khẩu trang Pigeon cho bé',
+    id: 1,
+    name: 'Sữa - Khẩu trang Pigeon cho bé',
     productType: 'Sữa',
     img: 'img1-thumb.jpg',
     price: 7,
@@ -32,7 +32,7 @@ Quy cách: 160ml
   {
     id: 3,
     productType: 'Sữa',
-    name: 'Green',
+    name: 'Sữa - Green',
     img: 'img1-thumb.jpg',
     price: 8,
     description: 'Ringo'
@@ -47,24 +47,64 @@ Quy cách: 160ml
   }
 ];
 
-export function getProducts(req) {
+export function getProducts(req, type) {
   let products = req.session.products;
-  if (!products) {
-    products = initialProducts;
-    req.session.products = products;
+  // if (!products) {
+  products = initialProducts;
+  console.log('type', JSON.stringify(type));
+  if (parseInt(type, 10) === 10) {
+    products = products.filter(pr => pr.productType == 'Sữa');
   }
+  req.session.products = products;
+  // }
   return products;
 }
 
-export default function load(req) {
+export default function load(req, params) {
   return new Promise((resolve, reject) => {
+    //console.log('params', params);
+    const type = params[0];
     // make async call to database
     setTimeout(() => {
-      // if (Math.random() < 0.33) {        
-      //   reject('Products load fails 33% of the time. You were unlucky.');
-      // } else {      
-      resolve(getProducts(req));
-      // }
+    //   // if (Math.random() < 0.33) {        
+    //   //   reject('Products load fails 33% of the time. You were unlucky.');
+    //   // } else {      
+      resolve(getProducts(req, type));
+    //   // }
     }, 500); // simulate async load
+
+
+    // // lets require/import the mongodb native drivers.
+    // const mongodb = require('mongodb');
+
+    // // load from mlab: mongodb://admin:1234@ds151068.mlab.com:51068/shop
+    // const url = process.env.MONGOLAB_URI || 'mongodb://admin:1234@ds151068.mlab.com:51068/shop';
+
+    // //We need to work with "MongoClient" interface in order to connect to a mongodb server.
+    // const MongoClient = mongodb.MongoClient;
+
+    // // Connection URL. This is where your mongodb server is running.
+
+    // //(Focus on This Variable)
+    // // var url = 'mongodb://localhost:27017/my_database_name';      
+    // //(Focus on This Variable)
+
+    // // Use connect method to connect to the Server
+    // MongoClient.connect(url, function (err, db) {
+    // if (err) {
+    //   console.log('Unable to connect to the mongoDB server. Error:', err);
+    // } else {
+    //   console.log('Connection established to', url);
+
+    //   db.collection('products', (er, collection) => {
+    //     // filter collection based on type
+    //     resolve(collection);
+    //   });
+    //   // do some work here with the database.
+
+    //   //Close connection
+    //   db.close();
+    // }
   });
+});
 }
